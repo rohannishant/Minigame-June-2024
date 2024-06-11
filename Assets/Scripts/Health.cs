@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Health : MonoBehaviour
+{
+    [SerializeField]
+    int health, maxHealth;
+
+    public int HealthAmount { get { return health; } }
+
+    public virtual void UpdateHealth (int amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+    }
+}

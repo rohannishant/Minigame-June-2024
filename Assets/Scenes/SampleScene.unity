@@ -2384,6 +2384,7 @@ GameObject:
   - component: {fileID: 2078905765}
   - component: {fileID: 2078905766}
   - component: {fileID: 2078905767}
+  - component: {fileID: 2078905768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2472,7 +2473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   rb: {fileID: 2078905766}
-  health: 100
   healthFull: {fileID: -1905769719, guid: 17fe20ab4bd7e5b40baff9a6498c7ed9, type: 3}
   healthHalf: {fileID: 933066163, guid: 17fe20ab4bd7e5b40baff9a6498c7ed9, type: 3}
   healthEmpty: {fileID: 200806549, guid: 17fe20ab4bd7e5b40baff9a6498c7ed9, type: 3}
@@ -2554,6 +2554,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7691748, y: 0.8999758}
   m_EdgeRadius: 0
+--- !u!114 &2078905768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078905762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e994b8e436e9546ad344509903ea7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
 --- !u!1 &2084141051
 GameObject:
   m_ObjectHideFlags: 0

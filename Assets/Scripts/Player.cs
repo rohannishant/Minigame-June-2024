@@ -15,16 +15,16 @@ public class Player : MonoBehaviour
     Vector2 move;
 
     [SerializeField]
-    int health = 10;
-    [SerializeField]
     Sprite healthFull, healthHalf, healthEmpty;
     [SerializeField]
     Image[] healthImages;
 
+    Health health;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -48,11 +48,11 @@ public class Player : MonoBehaviour
 
     public void UpdateHealth(int amount)
     {
-        health = Mathf.Clamp(health + amount, 0, 10);
-        UpdateHealthUI();
+        health.UpdateHealth(amount);
+        UpdateHealthUI(health.HealthAmount);
     }
 
-    void UpdateHealthUI()
+    public void UpdateHealthUI(float health)
     {
         int fullHearts = Mathf.FloorToInt(health / 2f);
         for (int i = 0; i < fullHearts; i++)
