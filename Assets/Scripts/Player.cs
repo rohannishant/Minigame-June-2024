@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(move * moveSpeed * Time.fixedDeltaTime);
     }
 
     public void UpdateHealth(int amount)
