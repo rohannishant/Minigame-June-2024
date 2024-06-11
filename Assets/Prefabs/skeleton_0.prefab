@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5740053064887582928}
   - component: {fileID: 2253087292634889818}
   - component: {fileID: 1173348559401326444}
+  - component: {fileID: 4722600010324561524}
   m_Layer: 0
   m_Name: skeleton_0
   m_TagString: Untagged
@@ -173,3 +174,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useAI: 0
   knockback: 20
+--- !u!114 &4722600010324561524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864934606008334245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e994b8e436e9546ad344509903ea7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  maxHealth: 5

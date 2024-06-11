@@ -24,7 +24,6 @@ public class Skeleton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.gameObject.GetComponent<Player>();
-        Debug.Log("collison occured");
         if (player != null)
         {
             player.UpdateHealth(-1);
