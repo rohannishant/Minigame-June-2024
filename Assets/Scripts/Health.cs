@@ -8,10 +8,17 @@ public class Health : MonoBehaviour
     int health, maxHealth;
 
     public int HealthAmount { get { return health; } }
+    public int MaxHealth {  get { return maxHealth; } }
 
-    public virtual void UpdateHealth (int amount)
+    public HealthBar bar = null;
+
+    public void UpdateHealth (int amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        if (bar != null)
+        {
+            bar.UpdateHealth();
+        }
         StartCoroutine(DamageRed(GetComponent<SpriteRenderer>()));
     }
 
