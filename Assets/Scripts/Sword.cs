@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Sword : MonoBehaviour
 {
     [SerializeField]
     int damage;
     [SerializeField]
-    int swordKnockback;
-    private void OnTriggerEnter2D(Collider2D collision)
+    float swordKnockback;
+
+    [SerializeField]
+    CircleCollider2D swordRadius;
+
+    Animator animator;
+    private void Start()
     {
-        Health health = collision.gameObject.GetComponent<Health>();
-        if (health != null && collision.gameObject.GetComponent<Player>() == null)
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            health.UpdateHealth(-damage);
-            if(collision.gameObject.name == "skeleton_0(Clone)")
+            animator.SetTrigger("attack");
+            List<Collider2D> colliders = new List<Collider2D>();
+            swordRadius.OverlapCollider(new ContactFilter2D().NoFilter(), colliders);
+            foreach (Health health in colliders.Select(collider => collider.GetComponent<Health>()).Where(health => health != null && health.GetComponent<Player>() == null))
             {
-                Debug.Log("lets go");
-                Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-                Vector2 location = new Vector2(transform.position.x, transform.position.y);
-                Vector2 knockbackDirection = (rb.position - location).normalized;
+                health.UpdateHealth(-damage);
+                Rigidbody2D rb = health.GetComponent<Rigidbody2D>();
+                Vector2 playerPos = new Vector2(transform.parent.position.x, transform.parent.position.y);
+                Vector2 knockbackDirection = (rb.position - playerPos).normalized;
                 rb.AddForce(knockbackDirection * swordKnockback, ForceMode2D.Impulse);
             }
         }

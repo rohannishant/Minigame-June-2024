@@ -21,9 +21,9 @@ public class Skeleton : MonoBehaviour
         
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        Player player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
             player.UpdateHealth(-1);
