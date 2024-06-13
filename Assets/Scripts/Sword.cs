@@ -14,6 +14,7 @@ public class Sword : MonoBehaviour
     CircleCollider2D swordRadius;
 
     Animator animator;
+    int isEnemyDead = 0;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,11 +29,15 @@ public class Sword : MonoBehaviour
             swordRadius.OverlapCollider(new ContactFilter2D().NoFilter(), colliders);
             foreach (Health health in colliders.Select(collider => collider.GetComponent<Health>()).Where(health => health != null && health.GetComponent<Player>() == null))
             {
-                health.UpdateHealth(-damage);
+                isEnemyDead = health.UpdateHealth(-damage);
                 Rigidbody2D rb = health.GetComponent<Rigidbody2D>();
                 Vector2 playerPos = new Vector2(transform.parent.position.x, transform.parent.position.y);
                 Vector2 knockbackDirection = (rb.position - playerPos).normalized;
                 rb.AddForce(knockbackDirection * swordKnockback, ForceMode2D.Impulse);
+                if(isEnemyDead == 1)
+                {
+                    Destroy(health.gameObject);
+                }
             }
         }
     }

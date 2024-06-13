@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     public HealthBar bar = null;
 
-    public void UpdateHealth (int amount)
+    public int UpdateHealth (int amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (bar != null)
@@ -20,6 +20,11 @@ public class Health : MonoBehaviour
             bar.UpdateHealth();
         }
         StartCoroutine(DamageRed(GetComponent<SpriteRenderer>()));
+        if (health == 0)
+        {
+            return 1;
+        }
+        return 0;
     }
 
     IEnumerator DamageRed(SpriteRenderer render)
