@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         //instantiate allows for new objects to be spawned in the scene
         //this function will spawn a enemy with a random location
         //quaternion.identity means that the new enemy will not have any rotations
-        GameObject newEnemy = Instantiate(enemy, new Vector3(6f, 1f, 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, new Vector3(4f, 1f, 0), Quaternion.identity);
         return null;
     }
 }
