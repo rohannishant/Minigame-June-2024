@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
-    public GameObject itemIcon;
+    [SerializeField]
+    GameObject itemIcon;
     // Start is called before the first frame update
     void Start()
     {

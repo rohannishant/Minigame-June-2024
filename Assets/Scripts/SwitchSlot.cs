@@ -11,6 +11,11 @@ public class SwitchSlot : MonoBehaviour
     [SerializeField]
     Image selectedSlot;
 
+    Inventory inventory;
+    void Start()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,5 +49,6 @@ public class SwitchSlot : MonoBehaviour
     {
         Vector2 newLocation = inventorySlots[slotNumber-1].gameObject.transform.position;
         selectedSlot.transform.position = newLocation;
+        inventory.currentSlot = slotNumber;
     }
 }
