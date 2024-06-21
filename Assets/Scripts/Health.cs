@@ -19,7 +19,14 @@ public class Health : MonoBehaviour
         {
             bar.UpdateHealth();
         }
-        StartCoroutine(DamageRed(GetComponent<SpriteRenderer>()));
+        if (amount > 0)
+        {
+            StartCoroutine(HealGreen(GetComponent<SpriteRenderer>()));
+        }
+        else
+        {
+            StartCoroutine(DamageRed(GetComponent<SpriteRenderer>()));
+        }
         if (health == 0)
         {
             return 1;
@@ -30,6 +37,12 @@ public class Health : MonoBehaviour
     IEnumerator DamageRed(SpriteRenderer render)
     {
         render.color = Color.red;
+        yield return new WaitForSeconds(.25f);
+        render.color = Color.white;
+    }
+    IEnumerator HealGreen(SpriteRenderer render)
+    {
+        render.color = Color.green;
         yield return new WaitForSeconds(.25f);
         render.color = Color.white;
     }

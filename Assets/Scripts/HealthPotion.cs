@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class HealthPotion : MonoBehaviour
 {
-    Health health;
+    Player player;
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        health = player.GetComponent<Health>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         
     }
     public void heal()
     {
-        health.UpdateHealth(2);
+        player.UpdateHealth(2);
         
     }
     public void healEffect()
