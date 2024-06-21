@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Drop : MonoBehaviour
@@ -44,6 +46,45 @@ public class Drop : MonoBehaviour
             {
                 DropItem(slotFive);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (inventory.currentSlot == 1)
+            {
+                UseItem(slotOne);
+            }
+            if (inventory.currentSlot == 2)
+            {
+                UseItem(slotTwo);
+            }
+            if (inventory.currentSlot == 3)
+            {
+                UseItem(slotThree);
+            }
+            if (inventory.currentSlot == 4)
+            {
+                UseItem(slotFour);
+            }
+            if (inventory.currentSlot == 5)
+            {
+                UseItem(slotFive);
+            }
+        }
+    }
+    void UseItem(Transform slotTransform)
+    {
+        inventory.isFull[inventory.currentSlot-1] = false;
+        int childNum = slotTransform.childCount;
+        for (int i = 0; i < childNum; i++)
+        {
+            HealthPotion healthPotion = slotTransform.GetChild(i).gameObject.GetComponent<HealthPotion>();
+            if(healthPotion == null)
+            {
+                Debug.Log("whyyyyy");
+            }
+            healthPotion.heal();
+            healthPotion.healEffect();
+            DestroyImmediate(slotTransform.GetChild(i).gameObject);
         }
     }
     void DropItem(Transform slotTransform)
