@@ -27,7 +27,13 @@ public class Sword : MonoBehaviour
             animator.SetTrigger("attack");
             List<Collider2D> colliders = new List<Collider2D>();
             swordRadius.OverlapCollider(new ContactFilter2D().NoFilter(), colliders);
-            foreach (Health health in colliders.Select(collider => collider.GetComponent<Health>()).Where(health => health != null && health.GetComponent<Player>() == null))
+            foreach (Chest chest in colliders.Where(collider => collider.GetComponent<Chest>() != null)
+                .Select(collider => collider.GetComponent<Chest>()))
+            {
+                chest.Open();
+            }
+            foreach (Health health in colliders.Select(collider => collider.GetComponent<Health>())
+                .Where(health => health != null && health.GetComponent<Player>() == null))
             {
                 isEnemyDead = health.UpdateHealth(-damage);
                 Rigidbody2D rb = health.GetComponent<Rigidbody2D>();
