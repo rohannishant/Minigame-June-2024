@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Pathfinding;
 
 public class Sword : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Sword : MonoBehaviour
     int damage;
     [SerializeField]
     float swordKnockback;
+    [SerializeField]
+    float aiDisableDelay;
 
     [SerializeField]
     CircleCollider2D swordRadius;
@@ -39,12 +42,21 @@ public class Sword : MonoBehaviour
                 Rigidbody2D rb = health.GetComponent<Rigidbody2D>();
                 Vector2 playerPos = new Vector2(transform.parent.position.x, transform.parent.position.y);
                 Vector2 knockbackDirection = (rb.position - playerPos).normalized;
-                rb.AddForce(knockbackDirection * swordKnockback, ForceMode2D.Impulse);
+                StartCoroutine(KnockBackForce(rb, knockbackDirection * swordKnockback));
                 if(isEnemyDead == 1)
                 {
                     Destroy(health.gameObject);
                 }
             }
         }
+    }
+
+    IEnumerator KnockBackForce(Rigidbody2D rb, Vector2 force)
+    {
+        AIPath ai = rb.GetComponent<AIPath>();
+        ai.canMove = false;
+        rb.AddForce(force, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(aiDisableDelay);
+        ai.canMove = true;
     }
 }

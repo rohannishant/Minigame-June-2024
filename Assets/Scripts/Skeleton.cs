@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using Pathfinding;
 
 public class Skeleton : MonoBehaviour
 {
@@ -9,10 +7,14 @@ public class Skeleton : MonoBehaviour
     bool useAI;
     [SerializeField]
     float knockback;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(useAI)
+        {
+            GetComponent<AIDestinationSetter>().target = GameObject.FindWithTag("Player").transform;
+        }
     }
 
     // Update is called once per frame
