@@ -5434,6 +5434,7 @@ GameObject:
   - component: {fileID: 2078905769}
   - component: {fileID: 2078905770}
   - component: {fileID: 2078905771}
+  - component: {fileID: 2078905772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5482,7 +5483,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1975215791, guid: 4671164d7d774994395dfcfdbd1086dc, type: 3}
+  m_Sprite: {fileID: 1153269638, guid: 7cc6daa9fd436734bb3f08518799ed57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5534,6 +5535,7 @@ MonoBehaviour:
   - {fileID: 1735269678}
   - {fileID: 1335149523}
   - {fileID: 71749752}
+  animationSpeed: 2
 --- !u!50 &2078905766
 Rigidbody2D:
   serializedVersion: 4
@@ -5593,7 +5595,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000014901161, y: 0}
+  m_Offset: {x: 0, y: -0.04206775}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5604,7 +5606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7691748, y: 0.8999758}
+  m_Size: {x: 0.6902977, y: 0.8894588}
   m_EdgeRadius: 0
 --- !u!114 &2078905768
 MonoBehaviour:
@@ -5679,6 +5681,27 @@ MonoBehaviour:
   slotFour: {fileID: 2076928937}
   slotFive: {fileID: 1956374108}
   healthPotionPrefab: {fileID: 8231261518103124712, guid: d9a262f1e3553a74daf5214bd0de3bfa, type: 3}
+--- !u!95 &2078905772
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078905762}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41390e2e073de044cb95c184640294af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2084141051
 GameObject:
   m_ObjectHideFlags: 0
