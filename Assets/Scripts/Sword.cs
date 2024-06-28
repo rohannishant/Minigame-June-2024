@@ -18,6 +18,11 @@ public class Sword : MonoBehaviour
 
     Animator animator;
     int isEnemyDead = 0;
+
+    float timer = 0f;
+    [SerializeField]
+    float attackRate;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,8 +30,12 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        timer = Mathf.Max(timer - Time.deltaTime, 0f);
+
+        if (Input.GetMouseButtonDown(0) && timer == 0f)
         {
+            timer = attackRate;
+
             animator.SetTrigger("attack");
             List<Collider2D> colliders = new List<Collider2D>();
             swordRadius.OverlapCollider(new ContactFilter2D().NoFilter(), colliders);

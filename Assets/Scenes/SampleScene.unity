@@ -3039,6 +3039,7 @@ MonoBehaviour:
   swordKnockback: 20
   aiDisableDelay: 0.5
   swordRadius: {fileID: 1926138912}
+  attackRate: 0.65
 --- !u!95 &892904579
 Animator:
   serializedVersion: 5
@@ -5524,7 +5525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167ab925116a01c43a08f9fe654ab50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  moveSpeed: 2750
   rb: {fileID: 2078905766}
   healthFull: {fileID: -1905769719, guid: 17fe20ab4bd7e5b40baff9a6498c7ed9, type: 3}
   healthHalf: {fileID: 933066163, guid: 17fe20ab4bd7e5b40baff9a6498c7ed9, type: 3}

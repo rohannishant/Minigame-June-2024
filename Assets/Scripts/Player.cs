@@ -40,10 +40,10 @@ public class Player : MonoBehaviour
         move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
         // 0, 1, 2, 3 = N, E, S, W
-        if (move.y > 0) animator.SetInteger("Direction", 0);
-        else if (move.y < 0) animator.SetInteger("Direction", 2);
-        else if (move.x > 0) animator.SetInteger("Direction", 1);
+        if (move.x > 0) animator.SetInteger("Direction", 1);
         else if (move.x < 0) animator.SetInteger("Direction", 3);
+        else if (move.y > 0) animator.SetInteger("Direction", 0);
+        else if (move.y < 0) animator.SetInteger("Direction", 2);
 
         animator.SetBool("Moving", move.magnitude > 0);
 
