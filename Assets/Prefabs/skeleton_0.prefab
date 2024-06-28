@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useAI: 1
   knockback: 20
+  viewDistance: 5
 --- !u!114 &4722600010324561524
 MonoBehaviour:
   m_ObjectHideFlags: 0

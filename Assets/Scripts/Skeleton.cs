@@ -8,19 +8,28 @@ public class Skeleton : MonoBehaviour
     [SerializeField]
     float knockback;
 
+    [SerializeField]
+    float viewDistance;
+
+    Transform player;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(useAI)
-        {
-            GetComponent<AIDestinationSetter>().target = GameObject.FindWithTag("Player").transform;
-        }
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (useAI && (transform.position - player.position).magnitude <= viewDistance)
+        {
+            GetComponent<AIDestinationSetter>().target = player;
+        }
+        else if (useAI)
+        {
+            GetComponent<AIDestinationSetter>().target = null;
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
