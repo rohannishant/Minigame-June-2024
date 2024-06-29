@@ -12,11 +12,15 @@ public class Skeleton : MonoBehaviour
     float viewDistance;
 
     Transform player;
+    Animator animator;
+    AIDestinationSetter dest;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+        dest = GetComponent<AIDestinationSetter>();
     }
 
     // Update is called once per frame
@@ -24,14 +28,16 @@ public class Skeleton : MonoBehaviour
     {
         if (useAI && (transform.position - player.position).magnitude <= viewDistance)
         {
-            GetComponent<AIDestinationSetter>().target = player;
+            dest.target = player;
         }
         else if (useAI)
         {
-            GetComponent<AIDestinationSetter>().target = null;
+            dest.target = null;
         }
+
+        animator.SetBool("moving", dest.target != null);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();

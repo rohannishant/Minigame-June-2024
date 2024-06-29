@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemies.RemoveAll(obj => obj == null);
+        if (enemies.RemoveAll(obj => obj == null) > 0) timer = spawnRate;
 
         timer = Mathf.Max(timer - Time.deltaTime, 0f);
         if (enemies.Count < maxSpawned && timer == 0f)
