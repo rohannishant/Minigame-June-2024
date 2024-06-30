@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using Pathfinding;
 
 public class Skeleton : MonoBehaviour
 {
@@ -9,18 +7,37 @@ public class Skeleton : MonoBehaviour
     bool useAI;
     [SerializeField]
     float knockback;
+
+    [SerializeField]
+    float viewDistance;
+
+    Transform player;
+    Animator animator;
+    AIDestinationSetter dest;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+        dest = GetComponent<AIDestinationSetter>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (useAI && (transform.position - player.position).magnitude <= viewDistance)
+        {
+            dest.target = player;
+        }
+        else if (useAI)
+        {
+            dest.target = null;
+        }
+
+        animator.SetBool("moving", dest.target != null);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();

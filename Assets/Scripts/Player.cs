@@ -21,17 +21,33 @@ public class Player : MonoBehaviour
 
     Health health;
 
+    Animator animator;
+    [SerializeField]
+    float animationSpeed = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
+
+        animator.speed = animationSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
         move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        if(Input.GetKeyDown(KeyCode.G))
+
+        // 0, 1, 2, 3 = N, E, S, W
+        if (move.x > 0) animator.SetInteger("Direction", 1);
+        else if (move.x < 0) animator.SetInteger("Direction", 3);
+        else if (move.y > 0) animator.SetInteger("Direction", 0);
+        else if (move.y < 0) animator.SetInteger("Direction", 2);
+
+        animator.SetBool("Moving", move.magnitude > 0);
+
+        if (Input.GetKeyDown(KeyCode.G))
         {
             UpdateHealth(-1);
         }
